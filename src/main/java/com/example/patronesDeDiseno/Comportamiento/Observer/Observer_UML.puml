@@ -1,0 +1,26 @@
+@startuml
+interface Observer {
+    + update(state: String): void
+}
+
+class Subject {
+    - observers: List<Observer>
+    + attach(observer: Observer): void
+    + detach(observer: Observer): void
+    + notifyObservers(): void
+}
+
+class ConcreteSubject extends Subject {
+    - state: String
+    + getState(): String
+    + setState(state: String): void
+}
+
+class ConcreteObserver implements Observer {
+    - state: String
+    - subject: Subject
+    + update(state: String): void
+}
+Subject --> Observer
+ConcreteSubject --> ConcreteObserver
+@enduml

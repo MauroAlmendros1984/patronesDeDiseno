@@ -1,0 +1,23 @@
+@startuml
+interface State {
+    + handle(context: Context): void
+}
+
+class ConcreteStateA implements State {
+    + handle(context: Context): void
+}
+
+class ConcreteStateB implements State {
+    + handle(context: Context): void
+}
+
+class Context {
+    - state: State
+    + setState(state: State): void
+    + request(): void
+}
+Context --> State
+ConcreteStateA --> Context
+ConcreteStateB --> Context
+@enduml
+

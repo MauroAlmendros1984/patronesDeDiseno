@@ -1,0 +1,17 @@
+@startuml
+interface AbstractExpression {
+    + interpret(context: Context): void
+}
+
+class TerminalExpression implements AbstractExpression {
+    + interpret(context: Context): void
+}
+
+class NonTerminalExpression implements AbstractExpression {
+    - expressions: List<AbstractExpression>
+    + interpret(context: Context): void
+}
+
+class Context
+NonTerminalExpression --> AbstractExpression
+@enduml

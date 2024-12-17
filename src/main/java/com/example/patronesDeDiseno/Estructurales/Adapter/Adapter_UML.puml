@@ -1,0 +1,47 @@
+@startuml
+interface MediaPlayer {
+    + play(audioType: String, fileName: String): void
+}
+
+class AudioPlayer implements MediaPlayer {
+    + play(audioType: String, fileName: String): void
+}
+
+interface AdvancedMediaPlayer {
+    + playVlc(fileName: String): void
+    + playMp4(fileName: String): void
+}
+
+class VlcPlayer implements AdvancedMediaPlayer {
+    + playVlc(fileName: String): void
+    + playMp4(fileName: String): void
+}
+
+class Mp4Player implements AdvancedMediaPlayer {
+    + playVlc(fileName: String): void
+    + playMp4(fileName: String): void
+}
+
+class Mp4Adapter implements MediaPlayer {
+    - advancedMusicPlayer: AdvancedMediaPlayer
+    + play(audioType: String, fileName: String): void
+}
+AudioPlayer --> Mp4Adapter
+
+Mp4Adapter --> AdvancedMediaPlayer
+
+note right of MediaPlayer
+El diagrama muestra la interfaz
+MediaPlayer con el método play.
+AudioPlayer implementa MediaPlayer.
+AdvancedMediaPlayer tiene métodos
+específicos para formatos mp4 y vlc.
+Mp4Player y VlcPlayer implementan
+AdvancedMediaPlayer.
+Mp4Adapter implementa MediaPlayer
+y usa AdvancedMediaPlayer para
+reproducir archivos mp4.
+end note
+@enduml
+
+

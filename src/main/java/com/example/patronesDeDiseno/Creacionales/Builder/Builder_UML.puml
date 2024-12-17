@@ -1,0 +1,22 @@
+@startuml
+class Product {
+    - part1: String
+    - part2: String
+    + setPart1(part1: String): void
+    + setPart2(part2: String): void
+}
+
+interface Builder {
+    + buildPart1(): void
+    + buildPart2(): void
+    + getResult(): Product
+}
+
+class ConcreteBuilder implements Builder {
+    - product: Product
+    + buildPart1(): void
+    + buildPart2(): void
+    + getResult(): Product
+}
+ConcreteBuilder --> Product
+@enduml

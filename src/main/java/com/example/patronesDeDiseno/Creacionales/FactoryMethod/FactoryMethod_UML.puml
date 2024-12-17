@@ -1,0 +1,18 @@
+@startuml
+interface Product {
+    +operation(): void
+}
+
+class ConcreteProduct implements Product {
+    +operation(): void
+}
+
+abstract class Creator {
+    +factoryMethod(): Product
+}
+
+class ConcreteCreator extends Creator {
+    +factoryMethod(): Product
+}
+ConcreteCreator --> ConcreteProduct
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+abstract class Handler {
+    # nextHandler: Handler
+    + setNext(handler: Handler): void
+    + handleRequest(request: Request): void
+}
+
+class ConcreteHandler1 extends Handler {
+    + handleRequest(request: Request): void
+}
+
+class ConcreteHandler2 extends Handler {
+    + handleRequest(request: Request): void
+}
+
+class Request
+Handler --> Handler
+ConcreteHandler1 --> Handler
+ConcreteHandler2 --> Handler
+@enduml

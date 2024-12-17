@@ -1,0 +1,25 @@
+@startuml
+interface Component {
+    + operation(): void
+}
+
+class ConcreteComponent implements Component {
+    + operation(): void
+}
+
+abstract class Decorator implements Component {
+    - component: Component
+    + operation(): void
+}
+
+class ConcreteDecoratorA extends Decorator {
+    + operation(): void
+}
+
+class ConcreteDecoratorB extends Decorator {
+    + operation(): void
+}
+Decorator --> Component
+ConcreteDecoratorA --> ConcreteComponent
+ConcreteDecoratorB --> ConcreteComponent
+@enduml

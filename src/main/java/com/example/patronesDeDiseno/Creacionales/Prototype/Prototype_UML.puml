@@ -1,0 +1,43 @@
+@startuml
+interface Shape {
+    + clone(): Shape
+    + draw(): void
+}
+
+class Rectangle implements Shape {
+    + clone(): Shape
+    + draw(): void
+}
+
+class Circle implements Shape {
+    + clone(): Shape
+    + draw(): void
+}
+
+class ShapeCache {
+    - static shapeMap: Map<String, Shape>
+    + static loadCache(): void
+    + static getShape(shapeId: String): Shape
+}
+
+Shape <|.. Rectangle
+Shape <|.. Circle
+ShapeCache ..> Shape : contains
+
+note right of ShapeCache
+  ShapeCache contiene un registro de prototipos.
+  Utiliza el método getShape para obtener una copia de un prototipo.
+end note
+
+note right of Shape
+  La interfaz Shape declara los métodos clone y draw.
+end note
+
+note right of Rectangle
+  La clase Rectangle implementa el método clone y draw.
+end note
+
+note right of Circle
+  La clase Circle implementa el método clone y draw.
+end note
+@enduml

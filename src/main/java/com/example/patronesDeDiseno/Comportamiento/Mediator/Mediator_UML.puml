@@ -1,0 +1,26 @@
+@startuml
+interface Mediator {
+    + send(message: String, colleague: Colleague): void
+}
+
+class ConcreteMediator implements Mediator {
+    - colleagues: List<Colleague>
+    + send(message: String, colleague: Colleague): void
+}
+
+abstract class Colleague {
+    # mediator: Mediator
+    + send(message: String): void
+    + receive(message: String): void
+}
+
+class ConcreteColleague1 extends Colleague {
+    + receive(message: String): void
+}
+
+class ConcreteColleague2 extends Colleague {
+    + receive(message: String): void
+}
+ConcreteColleague1 --> Mediator
+ConcreteColleague2 --> Mediator
+@enduml
